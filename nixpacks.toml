@@ -1,0 +1,13 @@
+[phases.setup]
+nixpkgs = ["php82", "nodejs_20", "curl", "git", "composer"]
+
+[phases.build]
+cmds = [
+  "composer install --no-interaction --prefer-dist --optimize-autoloader",
+  "cp .env.example .env",
+  "php artisan key:generate",
+  "php artisan migrate --force"
+]
+
+[start]
+cmd = "php artisan serve --host=0.0.0.0 --port=$PORT"
