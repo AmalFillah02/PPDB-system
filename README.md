@@ -2,7 +2,8 @@
 
 Aplikasi PPDB (Penerimaan Peserta Didik Baru) ini dibangun menggunakan **Laravel Framework** dan dilengkapi dengan fitur **pemetaan lokasi** menggunakan **Leaflet.js**. Aplikasi ini ditujukan untuk memudahkan proses pendaftaran siswa baru secara online, sekaligus menampilkan visualisasi lokasi rumah calon siswa.
 
-### 🔐 Halaman Admin
+### 🔐 Tampilan Halaman Siswa dan Admin
+![Admin Page](public/img/client.png)
 ![Admin Page](public/img/admin.png)
 
 ## ✨ Fitur
@@ -31,5 +32,6 @@ Aplikasi PPDB (Penerimaan Peserta Didik Baru) ini dibangun menggunakan **Laravel
         php artisa serve
 
 - ## 👤 Login Admin
+  email:admin@darulmuqodas.com pw:123456
   ```bash
         http://localhost:xxxx/login
