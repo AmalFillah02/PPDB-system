@@ -14,6 +14,7 @@ class Pendaftar extends Model
         'jurusan',
         'nama_siswa',
         'nik',
+        'nilai_rapor',
         'tempat_lahir',
         'jenis_kelamin',
         'tanggal_lahir',

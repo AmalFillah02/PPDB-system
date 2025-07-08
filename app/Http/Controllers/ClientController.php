@@ -89,6 +89,7 @@ class ClientController extends Controller
             'upload_nisn' => 'required|file|mimes:jpg,jpeg,png,pdf|max:2048',
             'upload_akta' => 'required|file|mimes:jpg,jpeg,png,pdf|max:2048',
             'upload_skl' => 'required|file|mimes:jpg,jpeg,png,pdf|max:2048',
+            'nilai_rapor' => 'required|numeric|min:0|max:100'
         ], [
             'latitude' => 'rumahmu',
         ]);
@@ -133,7 +134,7 @@ class ClientController extends Controller
             'upload_nisn' => $nisn,
             'upload_akta' => $akta,
             'upload_skl' => $skl,
-
+            'nilai_rapor' => $req->input('nilai_rapor'),
         ]);
         return redirect()->back()->with('success', 'Sukses Melakukan Registrasi Online');
     }

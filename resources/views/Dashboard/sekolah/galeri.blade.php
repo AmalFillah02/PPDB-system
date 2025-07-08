@@ -13,7 +13,7 @@
             <div class="col-lg-12">
               <div class="card">
                 <div class="card-header">
-                  <h4>Galeri SMK TI</h4>
+                  <h4>Galeri MTs Darul Muqodas</h4>
                 </div>
                 <div class="card-body table-responsive">
                     <div class="row">

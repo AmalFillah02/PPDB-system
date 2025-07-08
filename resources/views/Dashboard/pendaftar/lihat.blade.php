@@ -57,6 +57,10 @@
             <td>:</td>
             <td>{{$data->asal_sekolah}}</td>
             </tr>
+            <td>Nilai Rapor Rata-rata</td>
+            <td>:</td>
+            <td>{{$data->nilai_rapor}}</td>
+            </tr>
             <tr>
             <td>Agama</td>
             <td>:</td>

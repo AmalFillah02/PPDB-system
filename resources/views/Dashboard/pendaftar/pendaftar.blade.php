@@ -17,10 +17,12 @@
                                         <thead>
                                             <tr>
                                                 <th>No</th>
+                                                <th>No Pendaftar</th>
                                                 <th>Nama Lengkap</th>
                                                 <th>Asal Sekolah</th>
-                                                <th>Rekomendasi</th>
                                                 <th>Gelombang</th>
+                                                <th>Kategori Zona</th>
+                                                <th>Nilai Rapor Rata-rata</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -28,10 +30,12 @@
                                             @foreach($data_pendaftar as $dp)
                                                 <tr>
                                                     <td>{{$loop->iteration}}</td>
+                                                    <td>{{$dp->nomor_pendaftaran}}</td>
                                                     <td>{{$dp->nama_siswa}}</td>
                                                     <td>{{$dp->asal_sekolah}}</td>
-                                                    <td>{{$dp->rekomendasi ?? '-' }}</td>
                                                     <td>{{$dp->gelombang ?? '-' }}</td>
+                                                    <td>{{$dp->zona ?? '-' }}</td>
+                                                    <td>{{ $dp->nilai_rapor }}</td>
 
                                                     <td>
                                                         <a class="btn btn-primary dropdown-toggle" href="#" role="button"
@@ -103,11 +107,11 @@
                                         <thead>
                                             <tr>
                                                 <th>No</th>
+                                                <th>No. Pendaftaran</th>
                                                 <th>Nama Lengkap</th>
                                                 <th>NIK Siswa</th>
                                                 <th>TTL</th>
                                                 <th>Agama</th>
-                                                <th>Rekomendasi</th>
                                                 <th>Telfon Ayah</th>
                                                 <th>Telfon Ibu</th>
                                                 <th>Telfon Siswa</th>
@@ -128,11 +132,11 @@
                                             @foreach($data_acc as $dc)
                                                 <tr>
                                                     <td>{{$loop->iteration}}</td>
+                                                    <td>{{$dc->nomor_pendaftaran}}</td>
                                                     <td>{{$dc->nama_siswa}}</td>
                                                     <td>{{$dc->nik}}</td>
                                                     <td>{{$dc->tempat_lahir}}, {{$dc->tanggal_lahir}}</td>
                                                     <td>{{$dc->agama}}</td>
-                                                    <td>{{$dc->rekomendasi ?? '-'}}</td>
                                                     <td>{{$dc->hp_ayah}}</td>
                                                     <td>{{$dc->hp_ibu}}</td>
                                                     <td>{{$dc->hp_siswa}}</td>
@@ -185,7 +189,7 @@
                                             <tr>
                                                 <th>No</th>
                                                 <th>Nama Lengkap</th>
-                                                <th>Rekomendasi</th>
+                                                <th>Nomor Pendaftaran</th>
                                                 <th>Daftar Ulang</th>
                                             </tr>
                                         </thead>
@@ -194,12 +198,12 @@
                                                 <tr>
                                                     <td>{{$loop->iteration}}</td>
                                                     <td>{{$ddf->nama_siswa}}</td>
-                                                    <td>{{$ddf->rekomendasi ?? '-'}}</td>
+                                                    <td>{{$ddf->nomor_pendaftaran}}</td>
 
 
                                                     <td>
                                                         <a href="{{route('daful', $ddf->id)}}"
-                                                            class="btn btn-sm btn-block btn-outline-success">✅✅✅</a>
+                                                            class="btn btn-sm btn-block btn-outline-success">Sudah Daftar Ulang</a>
                                                     </td>
                                                 </tr>
                                             @endforeach
@@ -219,7 +223,7 @@
                                             <tr>
                                                 <th>No</th>
                                                 <th>Nama Lengkap</th>
-                                                <th>Rekomendasi</th>
+                                                <th>Nomor Pendaftaran</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -227,7 +231,7 @@
                                                 <tr>
                                                     <td>{{$loop->iteration}}</td>
                                                     <td>{{$ddfu->nama_siswa}}</td>
-                                                    <td>{{$ddfu->rekomendasi ?? '-'}}</td>
+                                                    <td>{{$ddfu->nomor_pendaftaran ?? '-'}}</td>
                                                 </tr>
                                             @endforeach
                                         </tbody>

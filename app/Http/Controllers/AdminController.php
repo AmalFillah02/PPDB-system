@@ -74,6 +74,7 @@ class AdminController extends Controller
             'latitude' => 'required|numeric',
             'longitude' => 'required|numeric',
             'zona' => 'required|string',
+            'nilai_rapor' => 'required|numeric|min:0|max:100',
         ]);
 
         Pendaftar::create([
@@ -95,6 +96,7 @@ class AdminController extends Controller
             'latitude' => $req->latitude,
             'longitude' => $req->longitude,
             'zona' => $req->zona,
+            'nilai_rapor' => $req->input('nilai_rapor'),
         ]);
 
 

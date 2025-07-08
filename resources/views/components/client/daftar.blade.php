@@ -1,12 +1,13 @@
 <div class="container-xxl py-5">
     <div class="container">
+
         <div class="text-center mx-auto" style="max-width: 500px">
             <h1 class="display-6 mb-5">
                 Formulir Pendaftaran Online MTs Darul Muqodas
             </h1>
         </div>
         <div class="row g-4 justify-content-center">
-        <form action="{{ route('yes_daftar') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('yes_daftar') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
 
@@ -59,20 +60,33 @@
 
                     <div class="col-md-12 mt-3">
                         <label>(Surat Keterengan Lulus) SKL<sup class="text-danger">*</sup></label>
-                        <input type="file" class="form-control @error('upload_skl') is-invalid @enderror" accept=".jpg,.jpeg,.png,.pdf" 
-                        {{$form}} @if($gelombang==null) 
-                        @elseif($gelombang->status_gelombang == 'Buka') name="upload_skl" 
+                        <input type="file" class="form-control @error('upload_skl') is-invalid @enderror" accept=".jpg,.jpeg,.png,.pdf"
+                            {{$form}} @if($gelombang==null)
+                            @elseif($gelombang->status_gelombang == 'Buka') name="upload_skl"
                         @endif>
                         @error('upload_skl')
                         <div class="invalid-feedback">{{$message}}</div>
                         @enderror
                     </div>
+                    
+                    <div class="col-md-12 mt-3">
+    <label>Nilai Rata-Rata Rapor Siswa <sup class="text-danger">*</sup></label>
+    <input type="number" step="0.01" min="0" max="100"
+        name="nilai_rapor"
+        class="form-control @error('nilai_rapor') is-invalid @enderror"
+        placeholder="Contoh: 85.75"
+        value="{{ old('nilai_rapor') }}">
+    @error('nilai_rapor')
+        <div class="invalid-feedback">{{ $message }}</div>
+    @enderror
+</div>
+
 
                     <div class="col-md-12 mt-3">
                         <label>NISN (Nomor Induk Siswa Nasional)<sup class="text-danger">*</sup></label>
-                        <input type="file" class="form-control @error('upload_nisn') is-invalid @enderror" accept=".jpg,.jpeg,.png,.pdf" 
-                        {{$form}} @if($gelombang==null) 
-                        @elseif($gelombang->status_gelombang == 'Buka') name="upload_nisn" 
+                        <input type="file" class="form-control @error('upload_nisn') is-invalid @enderror" accept=".jpg,.jpeg,.png,.pdf"
+                            {{$form}} @if($gelombang==null)
+                            @elseif($gelombang->status_gelombang == 'Buka') name="upload_nisn"
                         @endif>
                         @error('upload_nisn')
                         <div class="invalid-feedback">{{$message}}</div>
@@ -81,9 +95,9 @@
 
                     <div class="col-md-12 mt-3">
                         <label>Upload Kartu Keluarga (KK) <sup class="text-danger">*</sup></label>
-                        <input type="file" class="form-control @error('upload_kk') is-invalid @enderror" accept=".jpg,.jpeg,.png,.pdf" 
-                        {{$form}} @if($gelombang==null) 
-                        @elseif($gelombang->status_gelombang == 'Buka') name="upload_kk" 
+                        <input type="file" class="form-control @error('upload_kk') is-invalid @enderror" accept=".jpg,.jpeg,.png,.pdf"
+                            {{$form}} @if($gelombang==null)
+                            @elseif($gelombang->status_gelombang == 'Buka') name="upload_kk"
                         @endif>
                         @error('upload_kk')
                         <div class="invalid-feedback">{{$message}}</div>
@@ -92,15 +106,15 @@
 
                     <div class="col-md-12 mt-3">
                         <label>Akta Kelahiran<sup class="text-danger">*</sup></label>
-                        <input type="file" class="form-control @error('upload_akta') is-invalid @enderror" accept=".jpg,.jpeg,.png,.pdf" 
-                        {{$form}} @if($gelombang==null) 
-                        @elseif($gelombang->status_gelombang == 'Buka') name="upload_akta" 
+                        <input type="file" class="form-control @error('upload_akta') is-invalid @enderror" accept=".jpg,.jpeg,.png,.pdf"
+                            {{$form}} @if($gelombang==null)
+                            @elseif($gelombang->status_gelombang == 'Buka') name="upload_akta"
                         @endif>
                         @error('upload_akta')
                         <div class="invalid-feedback">{{$message}}</div>
                         @enderror
                     </div>
-                    
+
 
                     <div class="col-md-12 mt-3">
                         <label>Nomor Induk Kependudukan (NIK) Milik Siswa (Ada Di KK) </label>
@@ -321,83 +335,83 @@
                         @enderror
                     </div>
 
-<form action="{{ route('pendaftar.kirim') }}" method="POST">
-    @csrf
-                    <!-- Input tersembunyi untuk koordinat -->
-<input type="hidden" id="latitude" name="latitude">
-<input type="hidden" id="longitude" name="longitude">
+                    <form action="{{ route('pendaftar.kirim') }}" method="POST">
+                        @csrf
+                        <!-- Input tersembunyi untuk koordinat -->
+                        <input type="hidden" id="latitude" name="latitude">
+                        <input type="hidden" id="longitude" name="longitude">
 
-<!-- Peta -->
-<div id="map" style="height: 350px; margin-top: 20px;"></div>
-<p id="zona-info" class="mt-2 text-success fw-bold"></p>
-<input type="hidden" name="zona" id="zona">
+                        <!-- Peta -->
+                        <div id="map" style="height: 350px; margin-top: 20px;"></div>
+                        <p id="zona-info" class="mt-2 text-success fw-bold"></p>
+                        <input type="hidden" name="zona" id="zona">
 
 
-<!-- Leaflet CDN -->
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+                        <!-- Leaflet CDN -->
+                        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+                        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
-<script>
-    var sekolahLat = -6.8939225;
-    var sekolahLng = 111.0382558;
+                        <script>
+                            var sekolahLat = -6.8939225;
+                            var sekolahLng = 111.0382558;
 
-    var map = L.map('map').setView([sekolahLat, sekolahLng], 14);
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '© OpenStreetMap contributors'
-    }).addTo(map);
+                            var map = L.map('map').setView([sekolahLat, sekolahLng], 14);
+                            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                                attribution: '© OpenStreetMap contributors'
+                            }).addTo(map);
 
-    var sekolahMarker = L.marker([sekolahLat, sekolahLng]).addTo(map)
-        .bindPopup('MTs SA Darul Muqodas').openPopup();
+                            var sekolahMarker = L.marker([sekolahLat, sekolahLng]).addTo(map)
+                                .bindPopup('MTs SA Darul Muqodas').openPopup();
 
-    var marker;
+                            var marker;
 
-    function cekZona() {
-        let zona = document.getElementById('zona').value;
-        if (!zona) {
-            alert("Silakan klik lokasi Anda di peta untuk menentukan zona.");
-            return false;
-        }
-        return true;
-    }
+                            function cekZona() {
+                                let zona = document.getElementById('zona').value;
+                                if (!zona) {
+                                    alert("Silakan klik lokasi Anda di peta untuk menentukan zona.");
+                                    return false;
+                                }
+                                return true;
+                            }
 
-    function hitungJarak(lat1, lon1, lat2, lon2) {
-        const R = 6371; // km
-        const dLat = (lat2 - lat1) * Math.PI / 180;
-        const dLon = (lon2 - lon1) * Math.PI / 180;
-        const a = Math.sin(dLat/2) * Math.sin(dLat/2) +
-                  Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
-                  Math.sin(dLon/2) * Math.sin(dLon/2);
-        const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-        return R * c;
-    }
+                            function hitungJarak(lat1, lon1, lat2, lon2) {
+                                const R = 6371; // km
+                                const dLat = (lat2 - lat1) * Math.PI / 180;
+                                const dLon = (lon2 - lon1) * Math.PI / 180;
+                                const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                                    Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+                                    Math.sin(dLon / 2) * Math.sin(dLon / 2);
+                                const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+                                return R * c;
+                            }
 
-    map.on('click', function(e) {
-        var lat = e.latlng.lat;
-        var lng = e.latlng.lng;
+                            map.on('click', function(e) {
+                                var lat = e.latlng.lat;
+                                var lng = e.latlng.lng;
 
-        if (marker) map.removeLayer(marker);
-        marker = L.marker([lat, lng]).addTo(map)
-                 .bindPopup("Lokasi Anda").openPopup();
+                                if (marker) map.removeLayer(marker);
+                                marker = L.marker([lat, lng]).addTo(map)
+                                    .bindPopup("Lokasi Anda").openPopup();
 
-        document.getElementById('latitude').value = lat;
-        document.getElementById('longitude').value = lng;
+                                document.getElementById('latitude').value = lat;
+                                document.getElementById('longitude').value = lng;
 
-        var jarak = hitungJarak(sekolahLat, sekolahLng, lat, lng);
-        var zona = '';
+                                var jarak = hitungJarak(sekolahLat, sekolahLng, lat, lng);
+                                var zona = '';
 
-        if (jarak <= 1) {
-            zona = 'Zona 1 (≤ 1 km)';
-        } else if (jarak <= 3) {
-            zona = 'Zona 2 (> 1 km – 3 km)';
-        } else {
-            zona = 'Zona 3 (> 3 km)';
-        }
+                                if (jarak <= 1) {
+                                    zona = 'Zona 1 (≤ 1 km)';
+                                } else if (jarak <= 3) {
+                                    zona = 'Zona 2 (> 1 km – 3 km)';
+                                } else {
+                                    zona = 'Zona 3 (> 3 km)';
+                                }
 
-        document.getElementById('zona-info').innerText = 'Jarak: ' + jarak.toFixed(2) + ' km - ' + zona;
-        document.getElementById('zona').value = zona;
-    });
-</script>
-</form>
+                                document.getElementById('zona-info').innerText = 'Jarak: ' + jarak.toFixed(2) + ' km - ' + zona;
+                                document.getElementById('zona').value = zona;
+                            });
+                        </script>
+                    </form>
 
 
                     <div class="col-md-12 mt-3">
